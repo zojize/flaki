@@ -1,0 +1,77 @@
+{
+  "name": "flaki",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.17.1",
+  "description": "_description_",
+  "author": "Jeff Zou <jeffzo01@qq.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/antfu/flaki#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antfu/flaki.git"
+  },
+  "bugs": "https://github.com/antfu/flaki/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "flaki": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "prepublishOnly": "nr build",
+    "release": "bumpp",
+    "start": "node --experimental-strip-types --env-file-if-exists=.env --env-file-if-exists=.env.local dist/cli.js",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "typecheck": "tsc --noEmit",
+    "prepare": "simple-git-hooks"
+  },
+  "dependencies": {
+    "@commander-js/extra-typings": "^13.1.0",
+    "@google/genai": "^1.21.0",
+    "commander": "^13.1.0",
+    "dockerode": "^4.0.8",
+    "octokit": "^5.0.3",
+    "tar-stream": "^3.1.7",
+    "winston": "^3.17.0",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^5.4.1",
+    "@antfu/ni": "^26.0.1",
+    "@antfu/utils": "^9.2.1",
+    "@octokit/fixtures": "^23.1.1",
+    "@types/dockerode": "^3.3.44",
+    "@types/node": "^24.5.2",
+    "@types/tar-stream": "^3.1.4",
+    "bumpp": "^10.2.3",
+    "eslint": "^9.36.0",
+    "lint-staged": "^16.2.0",
+    "simple-git-hooks": "^2.13.1",
+    "tsdown": "^0.15.4",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm i --frozen-lockfile --ignore-scripts --offline && npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}

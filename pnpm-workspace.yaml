@@ -1,0 +1,7 @@
+ignoreWorkspaceRootCheck: true
+
+onlyBuiltDependencies:
+  - nodegit
+  - simple-git-hooks
+
+shellEmulator: true
